@@ -179,8 +179,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-
-# <h2 align=center>Congratulations on Creating a Virtual Home Lab!</h2>
+## Congratulations on Creating a Virtual Home Lab!
 
 <img width="2127" height="857" alt="Lab 48" src="https://github.com/user-attachments/assets/c9f75fc8-5d13-461b-88f9-f216f4493077" />
 
