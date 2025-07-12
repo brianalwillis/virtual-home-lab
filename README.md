@@ -36,6 +36,9 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 - **`Kali Linux:`**  
   Used as the attacker machine for penetration testing, vulnerability scanning, and offensive security simulations.
 
+- **`Bash:`**  
+  Used as the primary command-line shell within Kali Linux to execute scripts, automate tasks, manage tools, and perform offensive security operations.
+
 - **`Local Storage (50 GB):`**  
   Allocated for virtual machine disk images and snapshots, supporting test scenarios and system state preservation.
 
