@@ -143,11 +143,11 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ### Step 3: Extract Kali Linux with 7-Zip
 
-1. In the Downloads folder, right-click `kali-linux...`
+1. In the Downloads folder, right-click `kali-linux-2025.2-virtualbox-amd64`
 2. Hover over 7-Zip
 3. Extract to `kali-linux...`
 4. Double-click the extracted folder
-5. Double-click the `kali-linux...vbox` to import into VirtualBox
+5. Double-click the `kali-linux-2025.2-virtualbox-amd64.vbox` to import into VirtualBox
 
  <img width="641" height="230" alt="Lab 30" src="https://github.com/user-attachments/assets/8fb3ec55-15fd-4ce3-8ce9-f3512747504e" /></br>
 
@@ -169,7 +169,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 <h1 = align=center>Congratulations on Creating a Virtual Home Lab</h1>
 
-<img width="2127" height="857" alt="Lab 48" src="https://github.com/user-attachments/assets/c9f75fc8-5d13-461b-88f9-f216f4493077" />
+<img width="2127" height="857" alt="Lab 48" src="https://github.com/user-attachments/assets/c9f75fc8-5d13-461b-88f9-f216f4493077" /></br>
 
 ## Key Takeaways
 
