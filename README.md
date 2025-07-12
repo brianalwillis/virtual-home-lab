@@ -15,8 +15,8 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 |Services         | DNS, DHCP, Active Directory, Web Servers, Pen-testing tools, etc.            |
 
 **What can you do with a virtual home lab?**
-|Component        |Purpose 
-|-----------------|---------------------------------------------------------------------------|
+|Use Case              | Description
+|----------------------|----------------------------------------------------------------------|
 |Learn IT Skills       | Practice Windows Server, Linux, networking, Docker, Kubernetes, etc. |
 |Cybersecurity Testing | Set up attack & defense labs                                         |
 |Certifications        | Prepare for exams like CompTIA, Cisco, AWS, Microsoft, etc.          |
