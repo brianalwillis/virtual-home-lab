@@ -175,11 +175,11 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ### Properly Configure Your Virtual Machines!
 
-1. Ensure they have enough **resources**
-2. Install **Guest Additions**
-3. Take a clean **snapshot** for a baseline and before testing
-4. Harden or weaken **security** based on test goals
-5. Properly setup the **network** depending on your use case 
+- Ensure they have enough **resources**
+- Install **Guest Additions**
+- Take a clean **snapshot** for a baseline and before testing
+- Harden or weaken **security** based on test goals
+- Properly setup the **network** depending on your use case 
 
 <img width="1062" height="416" alt="Lab 50" src="https://github.com/user-attachments/assets/11bb3364-a7e4-473f-b737-ddc3ab91b94c" />
 
