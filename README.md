@@ -41,7 +41,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
   ---
 
-## 👣 Step-by-Step Guide
+## 👣 Installing VirtualBox
 
 ### Step 1: Visit the Official VirtualBox Website: `https://www.virtualbox.org`
 
@@ -66,6 +66,61 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 <img width="802" height="472" alt="image" src="https://github.com/user-attachments/assets/9b35136c-d897-4a15-aac6-bd8c6609ccbc" />
 
 ---
+
+## 👣 Installing Windows 10 in VirtualBox
+
+### Step 1: Download a Windows 10 ISO: https://www.microsoft.com/en-us/software-download/windows10
+
+<img width="992" height="263" alt="Lab 6" src="https://github.com/user-attachments/assets/a45d311f-e6a3-4c92-b63a-5fa1918179a5" />
+
+### Step 2: Run the Installer and Follow the Installation Wizard
+1. **Applicable Notices and License Terms:** Accept
+2. **Create Installation Media:** Next
+3. **Select Language, Architecture, and Edition:** Use the recommended options → Next
+4. **ISO File:** Next
+
+*Note: Save the ISO file on your desktop or wherever you'd like.*
+
+### Step 3: Open VirtualBox and Create a **New** VM
+
+<img width="1277" height="727" alt="Lab 11" src="https://github.com/user-attachments/assets/eff2147d-5286-41c9-a6bf-4a25f0179c81" /></br>
+
+- **Name:** Windows 10 (or whatever you'd like)
+- **ISO Image:** C:\Users\User\Desktop\Windows.iso
+- **Next**
+
+<img width="794" height="457" alt="Lab 12" src="https://github.com/user-attachments/assets/97fc9e44-0f08-4e70-a75c-328d8d7ce946" /></br>
+
+- **Base Memory:** 4096 MB
+- **Processors:** 1 CPU  
+- **Next**
+
+<img width="794" height="454" alt="Lab 13" src="https://github.com/user-attachments/assets/e1f1804d-6ccc-46c9-90f1-9a0d0873e224" /></br>
+
+- **Create a Virtual Hard Disk:** 50 GB
+- **Next**
+
+<img width="794" height="454" alt="Lab 14" src="https://github.com/user-attachments/assets/851bb072-5154-43b7-b9e4-db347e8c51e6" /></br>
+
+- **Summary:** Finish
+
+### Step 4: Start the VM and Install Windows
+
+<img width="1280" height="730" alt="Lab 16" src="https://github.com/user-attachments/assets/7321efa8-9505-4df5-9442-9300051ab10d" /></br>
+
+- **Next**
+- **Install Now**
+- **Activate Windows:** I don't have a product key
+- **Select the OS:** Windows 10 Pro
+- **Applicable Notices and License Terms:** I accept the license terms → Next
+- **Which Type of Installation:** Custom
+- **Where to Install Windows:** Next
+
+---
+
+## 👣 Installing Kali Linux in VirtualBox
+
+
 
 
 
