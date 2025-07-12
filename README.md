@@ -1,8 +1,8 @@
-<h1 = align=center>Creating a Virtual Home Lab</h1>
+<h1 = align=center>CREATING A VIRTUAL HOME LAB</h1>
 
 <img width="1162" height="902" alt="Untitled Diagram drawio (7)" src="https://github.com/user-attachments/assets/d91ce5c4-678e-4d14-8f5d-c7ecc6e1bca9" />
 
-## 🏡 What is a Home Lab?
+## 🏡 WHAT IS A HOME LAB?
 A **virtual home lab** is a software-based environment you set up at home to test, learn, or experiment with IT infrastructure, networking, cybersecurity, development, or system administration — without needing a full rack of physical servers.
 
 **A virtual lab usually includes:**
