@@ -31,7 +31,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
   Served as the primary hypervisor for hosting virtual machines locally in a controlled lab environment.
 
 - **`Windows Server:`**  
-  Deployed as the core infrastructure server for testing services such as Active Directory, DNS, or file sharing.
+  Deployed as the core infrastructure server for testing services such as Splunk, Active Directory, DNS, or file sharing.
 
 - **`Kali Linux:`**  
   Used as the attacker machine for penetration testing, vulnerability scanning, and offensive security simulations.
