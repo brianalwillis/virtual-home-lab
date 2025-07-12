@@ -41,7 +41,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
   ---
 
-## 👣 Installing VirtualBox
+## 👣 Installing `VirtualBox`
 
 ### Step 1: Visit the Official VirtualBox Website: `https://www.virtualbox.org`
 
@@ -67,11 +67,13 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-## 👣 Installing Windows 10 in VirtualBox
+## 👣 Installing `Windows 10` in VirtualBox
 
-### Step 1: Download a Windows 10 ISO: https://www.microsoft.com/en-us/software-download/windows10
+### Step 1: Download a Windows 10 ISO: `https://www.microsoft.com/en-us/software-download/windows10`
 
 <img width="992" height="263" alt="Lab 6" src="https://github.com/user-attachments/assets/a45d311f-e6a3-4c92-b63a-5fa1918179a5" />
+
+---
 
 ### Step 2: Run the Installer and Follow the Installation Wizard
 1. **Applicable Notices and License Terms:** Accept
@@ -81,7 +83,9 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 *Note: Save the ISO file on your desktop or wherever you'd like.*
 
-### Step 3: Open VirtualBox and Create a **New** VM
+---
+
+### Step 3: Open VirtualBox and Create a New VM
 
 <img width="1277" height="727" alt="Lab 11" src="https://github.com/user-attachments/assets/eff2147d-5286-41c9-a6bf-4a25f0179c81" /></br>
 
@@ -104,6 +108,8 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 - **Summary:** Finish
 
+---
+
 ### Step 4: Start the VM and Install Windows
 
 <img width="1280" height="730" alt="Lab 16" src="https://github.com/user-attachments/assets/7321efa8-9505-4df5-9442-9300051ab10d" /></br>
@@ -118,7 +124,73 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-## 👣 Installing Kali Linux in VirtualBox
+## 👣 Installing `Kali Linux` in VirtualBox
+
+### Step 1: Download Kali Linux: `https://www.kali.org/`
+
+<img width="1159" height="408" alt="Lab 24" src="https://github.com/user-attachments/assets/17384cef-efb3-4ae5-994a-9bd80db166e4" />
+
+---
+
+### Step 2: Download a Prebuilt VM for VirtualBox
+
+<img width="881" height="526" alt="Kali" src="https://github.com/user-attachments/assets/8b58b4f3-8184-4319-83d6-aa2c90a9d9a6" /></br>
+<img width="1272" height="677" alt="Lab 28" src="https://github.com/user-attachments/assets/33e49b1c-64be-4407-ac94-70bfea34b284" /></br>
+
+*Note: Kali Linux is a 7-Zip file extension. If you do not have 7-Zip installed, you'll need to navigate to `https://7-zip.org/` and download.*
+
+---
+
+### Step 3: Extract Kali Linux with 7-Zip
+
+1. In the Downloads folder, right-click `kali-linux...`
+2. Hover over 7-Zip
+3. Extract to `kali-linux...`
+4. Double-click the extracted folder
+5. Double-click the `kali-linux...vbox` to import into VirtualBox
+
+ <img width="641" height="230" alt="Lab 30" src="https://github.com/user-attachments/assets/8fb3ec55-15fd-4ce3-8ce9-f3512747504e" /></br>
+
+*Note: If you can't see file extensions `.vbox`, click on view and check file name extensions.*
+
+---
+
+### Step 4: Start the Kali Linux VM
+
+<img width="722" height="245" alt="Lab 31" src="https://github.com/user-attachments/assets/33d83883-343f-4f93-940a-d60d7be700ef" /></br>
+
+*Note: The default credentials for Kali Linux are `Kali` for both username and password.*
+
+*Optional: Change the default password in the terminal with the command `passwd`:*
+
+<img width="348" height="212" alt="Lab 42" src="https://github.com/user-attachments/assets/98bcbd8a-19da-4bc7-a85e-35f1fbd37c01" />
+
+---
+
+<h1 = align=center>Congratulations on Creating a Virtual Home Lab</h1>
+
+<img width="2127" height="857" alt="Lab 48" src="https://github.com/user-attachments/assets/c9f75fc8-5d13-461b-88f9-f216f4493077" />
+
+## Key Takeaways
+
+### Properly Configure Your Virtual Machines!
+
+1. Ensure they have enough **resources**
+2. Set up **networking** appropriately
+3. Install **Guest Additions**
+4. Take a clean **snapshot** for a baseline and before testing
+5. Harden or weaken **security** based on test goals
+
+---
+
+*This project was designed to simulate a controlled virtual environment for cybersecurity testing and network analysis using Windows Server and Kali Linux virtual machines. The goal was to assess system vulnerabilities, practice ethical hacking techniques, and observe system behavior under various security conditions.*
+
+**Created By:** `Briana Willis`  
+**Date:** `2025-07-11`  
+**Time:** `20:15 UTC`
+
+
+
 
 
 
