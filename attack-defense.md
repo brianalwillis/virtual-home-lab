@@ -1,14 +1,13 @@
-<h1 = align=center>Virtual Home Lab</h1>
+<h1 = align=center>VIRTUAL HOME LAB</h1>
 <h2 = align=center>Attack and Defense</h2>
 
 <p align="center">
 <img width="956" height="522" alt="Untitled Diagram drawio (7) drawio" src="https://github.com/user-attachments/assets/d4a4ad35-5a28-4c3e-bf07-cde76d12213b" />
 </p>
 
-<p align="center">
-  <strong>Attacker:</strong> Kali Linux <code>192.168.20.20</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>Defender:</strong> Windows 10 <code>192.168.20.10</code>
-</p>
+<h2 align="center">Attacker: Kali Linux <code>192.168.20.20</code></h2>
+
+<h2 align=center>Defender: Windows 10 <code>192.168.20.10</code></h2>
 
 ---
 
@@ -48,7 +47,7 @@ Before conducting the test, the `Windows 10` virtual machine was preconfigured w
 
 ---
 
-## 👣 Steps the `Attacker` Made
+## 👣 STEPS THE `ATTACKER` MADE
 
 ### Step 1: Aggressive Network Reconnaissance
 
@@ -181,7 +180,7 @@ The attacker runs the `exploit` command in Metasploit’s multi/handler module t
 
 ---
 
-## Analyzing Splunk
+## ANALYZING SPLUNK
 
 <img width="946" height="201" alt="Lab 215" src="https://github.com/user-attachments/assets/62738a87-be11-4f3d-8966-ba165ec011ff" /></br>
 
@@ -193,7 +192,7 @@ The attacker runs the `exploit` command in Metasploit’s multi/handler module t
 
 ---
 
-## 👣 Steps the `Defender` Made
+## 👣 STEPS THE `DEFENDER` MADE
 
 ### Step 1: Isolate the Compromised System
 
@@ -237,11 +236,11 @@ Follow organizational incident response procedures to document and escalate the 
 
 ---
 
-## 🧱 Hardening the System
+## 🧱 HARDENING THE SYSTEM
 
 ### Firewall
 
-To strengthen the security of the system, it’s important to enable and properly configure the Windows Firewall, including setting strict inbound rules that only allow necessary ports and block all others.
+To strengthen the security of the system, it’s important to enable and properly configure the `Windows Firewall`, including setting strict inbound rules that only allow necessary ports and block all others.
 
 <img width="551" height="428" alt="image" src="https://github.com/user-attachments/assets/f996facd-82c4-48f4-ad50-755ec24b05eb" /></br>
 
@@ -257,11 +256,11 @@ Turning on `Windows Security` features—such as real-time antivirus protection,
 
 <img width="792" height="581" alt="security" src="https://github.com/user-attachments/assets/3f71b339-ec5a-42c9-a779-15fa9e92a3fc" /></br>
 
-<img width="1142" height="627" alt="image" src="https://github.com/user-attachments/assets/ead80d00-87fc-47e1-bafe-40d60fee587e" /></br>
+<img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/ead80d00-87fc-47e1-bafe-40d60fee587e" /></br>
 
 ---
 
-### 139/tcp - NetBIOS Session Service
+### `139/tcp` NetBIOS Session Service
 
 <img width="1160" height="630" alt="Lab 237" src="https://github.com/user-attachments/assets/d7913fb4-5876-4c57-ab32-3d4ad3acc839" /></br>
 
@@ -273,7 +272,7 @@ Services → TCP/IP NetBIOS Helper → Properties → Startup Type: Disabled →
 
 ---
 
-### 445/tcp - Microsoft-DS (SMB over TCP)
+### `445/tcp` Microsoft-DS (SMB over TCP)
 
 <img width="740" height="632" alt="Lab 236" src="https://github.com/user-attachments/assets/0f8305c6-4150-4743-9051-d58352786298" /></br>
 
@@ -281,11 +280,15 @@ Control Panel → Programs → Programs and Features → Disable SMB 1.0/CIFS Fi
 
 ---
 
-### 3389/tcp - Remote Desktop Protocol (RDP)
+### `3389/tcp` Remote Desktop Protocol (RDP)
 
 <img width="795" height="630" alt="Lab 231" src="https://github.com/user-attachments/assets/e719e705-143b-45a5-a0d9-8dcd8b408a57" /></br>
 
 Settings → System → Remote Desktop → Off
+
+<img width="407" height="463" alt="Lab 235" src="https://github.com/user-attachments/assets/1efcf22c-aab2-4888-a27c-9577ce1aefaa" />
+
+Win + R → sysdm.cpl → Remote → Remote Desktop → Don't Allow Remote Connections
 
 ---
 
