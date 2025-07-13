@@ -246,7 +246,7 @@ To strengthen the security of the system, it’s important to enable and properl
 
 <img width="428" height="575" alt="Lab 230" src="https://github.com/user-attachments/assets/34ac8299-80ca-4eec-851d-c3394cf722aa" /></br>
 
-Inbound Rules → New Rule → Port → TCP → 135, 139, 445, 3389 → Block the Connection
+Inbound Rules → New Rule → Port → TCP → 139, 445, 3389 → Block the Connection
 
 ---
 
