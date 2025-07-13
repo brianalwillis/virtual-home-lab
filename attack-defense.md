@@ -237,7 +237,7 @@ Follow organizational incident response procedures to document and escalate the 
 
 ---
 
-## Hardening and Configuration
+## 🧱 Hardening the System
 
 ## Firewall
 
