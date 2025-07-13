@@ -1,5 +1,5 @@
 <h1 = align=center>VIRTUAL HOME LAB</h1>
-<h2 = align=center>Attack and Defense</h2>
+<h2 = align=center>Attack and Defend</h2>
 
 <p align="center">
 <img width="956" height="522" alt="Untitled Diagram drawio (7) drawio" src="https://github.com/user-attachments/assets/d4a4ad35-5a28-4c3e-bf07-cde76d12213b" />
