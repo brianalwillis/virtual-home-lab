@@ -239,7 +239,7 @@ Follow organizational incident response procedures to document and escalate the 
 
 ## 🧱 Hardening the System
 
-## Firewall
+### Firewall
 
 To strengthen the security of the system, it’s important to enable and properly configure the Windows Firewall, including setting strict inbound rules that only allow necessary ports and block all others.
 
@@ -249,7 +249,9 @@ To strengthen the security of the system, it’s important to enable and properl
 
 Inbound Rules → New Rule → Port → TCP → 135, 139, 445, 3389 → Block the Connection
 
-## Windows Defender and Updates
+---
+
+### Windows Defender and Updates
 
 Turning on `Windows Security` features—such as real-time antivirus protection, ransomware protection, and exploit mitigation—adds additional layers of defense. Ensuring that `Windows Updates` are enabled and set to install automatically helps keep the system protected against newly discovered threats and vulnerabilities. Additionally, keeping all operating system components and third-party applications updated with the latest security patches is essential.
 
@@ -257,7 +259,9 @@ Turning on `Windows Security` features—such as real-time antivirus protection,
 
 <img width="1142" height="627" alt="image" src="https://github.com/user-attachments/assets/ead80d00-87fc-47e1-bafe-40d60fee587e" /></br>
 
-## 139/tcp - NetBIOS Session Service
+---
+
+### 139/tcp - NetBIOS Session Service
 
 <img width="1160" height="630" alt="Lab 237" src="https://github.com/user-attachments/assets/d7913fb4-5876-4c57-ab32-3d4ad3acc839" /></br>
 
@@ -267,19 +271,25 @@ Control Panel → Network and Internet → Network Connections → Properties �
 
 Services → TCP/IP NetBIOS Helper → Properties → Startup Type: Disabled → Service Status: Stop
 
-## 445/tcp - Microsoft-DS (SMB over TCP)
+---
+
+### 445/tcp - Microsoft-DS (SMB over TCP)
 
 <img width="740" height="632" alt="Lab 236" src="https://github.com/user-attachments/assets/0f8305c6-4150-4743-9051-d58352786298" /></br>
 
 Control Panel → Programs → Programs and Features → Disable SMB 1.0/CIFS File Sharing Support
 
-## 3389/tcp - Remote Desktop Protocol (RDP)
+---
+
+### 3389/tcp - Remote Desktop Protocol (RDP)
 
 <img width="795" height="630" alt="Lab 231" src="https://github.com/user-attachments/assets/e719e705-143b-45a5-a0d9-8dcd8b408a57" /></br>
 
 Settings → System → Remote Desktop → Off
 
-## All Unnecessary and Vulnerable Ports are Closed
+---
+
+### All Unnecessary and Vulnerable Ports are Closed
 
 <img width="605" height="229" alt="Lab 239" src="https://github.com/user-attachments/assets/b2a472bc-f93d-4f7e-8fa5-a919daef666d" />
 
