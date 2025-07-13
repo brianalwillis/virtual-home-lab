@@ -180,7 +180,7 @@ The attacker runs the `exploit` command in Metasploit’s multi/handler module t
 
 ---
 
-## ANALYZING SPLUNK
+## 🔎 ANALYZING SPLUNK
 
 <img width="946" height="201" alt="Lab 215" src="https://github.com/user-attachments/assets/62738a87-be11-4f3d-8966-ba165ec011ff" /></br>
 
