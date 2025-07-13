@@ -286,7 +286,7 @@ Control Panel → Programs → Programs and Features → Disable SMB 1.0/CIFS Fi
 
 Settings → System → Remote Desktop → Off
 
-<img width="407" height="463" alt="Lab 235" src="https://github.com/user-attachments/assets/1efcf22c-aab2-4888-a27c-9577ce1aefaa" />
+<img width="407" height="463" alt="Lab 235" src="https://github.com/user-attachments/assets/1efcf22c-aab2-4888-a27c-9577ce1aefaa" /></br>
 
 Win + R → sysdm.cpl → Remote → Remote Desktop → Don't Allow Remote Connections
 
