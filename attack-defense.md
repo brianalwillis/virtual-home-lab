@@ -179,90 +179,117 @@ The attacker runs the `exploit` command in Metasploit’s multi/handler module t
 
 <img width="542" height="477" alt="Lab 86" src="https://github.com/user-attachments/assets/df91683c-2ada-4fc4-aeb0-a22e175f13ed" />
 
+---
 
+## Analyzing Splunk
+
+<img width="946" height="201" alt="Lab 215" src="https://github.com/user-attachments/assets/62738a87-be11-4f3d-8966-ba165ec011ff" /></br>
+
+<img width="954" height="201" alt="Lab 216" src="https://github.com/user-attachments/assets/872b8338-9dd4-411d-b82c-ad74b105c1c1" /></br>
+
+<img width="636" height="389" alt="Lab 218" src="https://github.com/user-attachments/assets/6652024f-b6e4-4827-8415-75d715853891" /></br>
+
+<img width="1284" height="395" alt="Lab 220" src="https://github.com/user-attachments/assets/bee72274-9860-471d-a6f3-462c2ededa7d" />
 
 ---
 
-### Step 4: Start the VM and Install Windows
+## 👣 Steps the `Defender` Made
 
-<img width="1280" height="730" alt="Lab 16" src="https://github.com/user-attachments/assets/7321efa8-9505-4df5-9442-9300051ab10d" /></br>
+### Step 1: Isolate the Compromised System
 
-- **Next**
-- **Install Now**
-- **Activate Windows:** I don't have a product key
-- **Select the OS:** Windows 10 Pro
-- **Applicable Notices and License Terms:** I accept the license terms → Next
-- **Which Type of Installation:** Custom
-- **Where to Install Windows:** Next
+Disconnect the affected machine from the network to prevent further communication with the attacker or lateral movement.
 
----
+### Step 2: Run Antivirus and Anti-Malware Scans
 
-## 👣 Installing `Kali Linux` in VirtualBox
+Use updated security software to detect and remove known malware.
 
-### Step 1: Download Kali Linux: `https://www.kali.org/`
+### Step 3: Analyze Suspicious Running Processes and Network Connections
 
-<img width="1159" height="408" alt="Lab 24" src="https://github.com/user-attachments/assets/17384cef-efb3-4ae5-994a-9bd80db166e4" />
+Use tools like Task Manager, netstat, or Sysinternals Process Explorer to identify suspicious activity.
 
----
+### Step 4: Check for Unauthorized Users or Services
 
-### Step 2: Download a Prebuilt VM for VirtualBox
+Review user accounts and running services for anomalies.
 
-<img width="881" height="526" alt="Kali" src="https://github.com/user-attachments/assets/8b58b4f3-8184-4319-83d6-aa2c90a9d9a6" /></br>
-<img width="1272" height="677" alt="Lab 28" src="https://github.com/user-attachments/assets/33e49b1c-64be-4407-ac94-70bfea34b284" /></br>
+### Step 5: Inspect Event Logs
 
-*Note: Kali Linux is a 7-Zip file extension. If you do not have 7-Zip installed, you'll need to navigate to `https://7-zip.org/` and download.*
+Analyze Windows Event Logs and Sysmon logs for unusual or suspicious events related to the payload execution.
 
----
+### Step 6: Update and Patch 
 
-### Step 3: Extract Kali Linux with 7-Zip
+Ensure the system’s OS and applications are fully patched to close vulnerabilities.
 
-1. In the Downloads folder, right-click `kali-linux-2025.2-virtualbox-amd64`
-2. Hover over 7-Zip
-3. Extract to `kali-linux...`
-4. Double-click the extracted folder
-5. Double-click the `kali-linux-2025.2-virtualbox-amd64.vbox` to import into VirtualBox
+### Step 7: Restore from Backup
 
- <img width="641" height="230" alt="Lab 30" src="https://github.com/user-attachments/assets/8fb3ec55-15fd-4ce3-8ce9-f3512747504e" /></br>
+If the infection is severe, restore the system to a clean backup state.
 
-*Note: If you can't see file extensions `.vbox`, click on view and check file name extensions.*
+### Step 8: Implement Endpoint Detection and Response (EDR)
 
----
+Use advanced tools that monitor behavior and can automate threat containment.
 
-### Step 4: Start the Kali Linux VM
+### Step 9: Educate Users
 
-<img width="722" height="245" alt="Lab 31" src="https://github.com/user-attachments/assets/33d83883-343f-4f93-940a-d60d7be700ef" /></br>
+Promote awareness on phishing, social engineering, and the importance of keeping file name extensions enabled to avoid being tricked by disguised malicious files.
 
-*Note: The default credentials for Kali Linux are `Kali` for both username and password.*
+### Step 10: Document and Report Incident
 
-*Optional: Change the default password in the terminal with the command `passwd`:*
-
-<img width="348" height="212" alt="Lab 42" src="https://github.com/user-attachments/assets/98bcbd8a-19da-4bc7-a85e-35f1fbd37c01" />
+Follow organizational incident response procedures to document and escalate the issue appropriately.
 
 ---
 
-## Properly Configure Your Virtual Machines!
+## Hardening and Configuration
 
-- Ensure they have enough **resources**
-- Install **Guest Additions**
-- Take a clean **snapshot** for a baseline and before testing
-- Harden or weaken **security** based on test goals
-- Properly setup the **network** depending on your use case 
+## Firewall
 
-<img width="1062" height="416" alt="Lab 50" src="https://github.com/user-attachments/assets/11bb3364-a7e4-473f-b737-ddc3ab91b94c" />
+To strengthen the security of the system, it’s important to enable and properly configure the Windows Firewall, including setting strict inbound rules that only allow necessary ports and block all others.
+
+<img width="551" height="428" alt="image" src="https://github.com/user-attachments/assets/f996facd-82c4-48f4-ad50-755ec24b05eb" /></br>
+
+<img width="428" height="575" alt="Lab 230" src="https://github.com/user-attachments/assets/34ac8299-80ca-4eec-851d-c3394cf722aa" /></br>
+
+Inbound Rules → New Rule → Port → TCP → 135, 139, 445, 3389 → Block the Connection
+
+## Windows Defender and Updates
+
+Turning on `Windows Security` features—such as real-time antivirus protection, ransomware protection, and exploit mitigation—adds additional layers of defense. Ensuring that `Windows Updates` are enabled and set to install automatically helps keep the system protected against newly discovered threats and vulnerabilities. Additionally, keeping all operating system components and third-party applications updated with the latest security patches is essential.
+
+<img width="792" height="581" alt="security" src="https://github.com/user-attachments/assets/3f71b339-ec5a-42c9-a779-15fa9e92a3fc" /></br>
+
+<img width="1142" height="627" alt="image" src="https://github.com/user-attachments/assets/ead80d00-87fc-47e1-bafe-40d60fee587e" /></br>
+
+## 139/tcp - NetBIOS Session Service
+
+<img width="1160" height="630" alt="Lab 237" src="https://github.com/user-attachments/assets/d7913fb4-5876-4c57-ab32-3d4ad3acc839" /></br>
+
+Control Panel → Network and Internet → Network Connections → Properties → Internet Protocol Version 4 → Properties → Advanced → WINS → Disable NetBIOS over TCP/IP
+
+<img width="861" height="587" alt="Lab 238" src="https://github.com/user-attachments/assets/13ffafba-9a1a-485c-8c9d-8f1d4a2b3440" /></br>
+
+Services → TCP/IP NetBIOS Helper → Properties → Startup Type: Disabled → Service Status: Stop
+
+## 445/tcp - Microsoft-DS (SMB over TCP)
+
+<img width="740" height="632" alt="Lab 236" src="https://github.com/user-attachments/assets/0f8305c6-4150-4743-9051-d58352786298" /></br>
+
+Control Panel → Programs → Programs and Features → Disable SMB 1.0/CIFS File Sharing Support
+
+## 3389/tcp - Remote Desktop Protocol (RDP)
+
+<img width="795" height="630" alt="Lab 231" src="https://github.com/user-attachments/assets/e719e705-143b-45a5-a0d9-8dcd8b408a57" /></br>
+
+Settings → System → Remote Desktop → Off
+
+## All Unnecessary and Vulnerable Ports are Closed
+
+<img width="605" height="229" alt="Lab 239" src="https://github.com/user-attachments/assets/b2a472bc-f93d-4f7e-8fa5-a919daef666d" />
 
 ---
 
-## Congratulations on Creating a Virtual Home Lab!
-
-<img width="2127" height="857" alt="Lab 48" src="https://github.com/user-attachments/assets/c9f75fc8-5d13-461b-88f9-f216f4493077" />
-
----
-
-*This project was designed to simulate a controlled virtual environment for cybersecurity testing and network analysis using Windows Server and Kali Linux virtual machines. The goal was to assess system vulnerabilities, practice ethical hacking techniques, and observe system behavior under various security conditions.*
+*This project simulates a real-world attack scenario in a controlled virtual lab environment to demonstrate how a malicious payload can be delivered, executed, and monitored using offensive security tools. Its purpose is to analyze attacker behavior, assess system vulnerabilities, and explore defensive measures using tools like Splunk and Sysmon.*
 
 **Created By:** `Briana Willis`  
-**Date:** `2025-07-11`  
-**Time:** `20:15 UTC`
+**Date:** `2025-07-13`  
+**Time:** `17:50 UTC`
 
 
 
