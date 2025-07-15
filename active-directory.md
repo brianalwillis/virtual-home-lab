@@ -270,8 +270,8 @@ These audits can be analyzed in `Event Viewer` (`Win + R` > `eventvwr.msc`) unde
 
 <img width="1156" height="595" alt="Lab 132" src="https://github.com/user-attachments/assets/0e675f68-a347-40b9-a058-6251d1ee5677" /></br>
 
-| Action          | Event ID | Description                                                |
-|-----------------|----------|------------------------------------------------------------|
+| Task Category   | Event ID | Description                                                |
+|:----------------|:---------|:-----------------------------------------------------------|
 | Logon           | 4624     | Successful user logon                                      |
 | Logoff          | 4634     | User logoff                                                |
 | Logon Failure   | 4625     | Failed user logon attempt                                  |
