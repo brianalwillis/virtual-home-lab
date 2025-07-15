@@ -106,65 +106,69 @@ Within `Briana Willis’` account properties in `Active Directory Users and Comp
 
 ---
 
+### Step 7: Set up `Remote Access` Services
 
+In `Server Manager`, we returned to `Add Roles and Features` to install the `Remote Access role`. During the setup, we selected the role services `DirectAccess and VPN` (RAS) as well as `Routing` to enable secure remote connectivity and traffic management for the network.
 
----
+<img width="781" height="555" alt="Lab 49" src="https://github.com/user-attachments/assets/9f3e9a0b-ac0a-4e73-baa5-1f18c2166a33" /></br>
 
-## 👣 STEPS THE `DEFENDER` MADE
+Next, we navigated to `Tools` > `Routing and Remote Access` and launched the Routing and Remote Access Server Setup Wizard. We proceeded to configure `NAT` by selecting our internet-facing network interface, named `Internet`, to provide network address translation for internal clients. Upon successful configuration, the domain controller (local server) displayed a green status arrow, indicating the service was running properly.
 
-### Step 1: Isolate the Compromised System
-
-Disconnect the affected machine from the network to prevent further communication with the attacker or lateral movement.
-
-### Step 2: Run Antivirus and Anti-Malware Scans
-
-Use updated security software to detect and remove known malware.
-
-### Step 3: Analyze Suspicious Running Processes and Network Connections
-
-Use tools like Task Manager, netstat, or Sysinternals Process Explorer to identify suspicious activity.
-
-### Step 4: Check for Unauthorized Users or Services
-
-Review user accounts and running services for anomalies.
-
-### Step 5: Inspect Event Logs
-
-Analyze Windows Event Logs and Sysmon logs for unusual or suspicious events related to the payload execution.
-
-### Step 6: Update and Patch 
-
-Ensure the system’s OS and applications are fully patched to close vulnerabilities.
-
-### Step 7: Restore from Backup
-
-If the infection is severe, restore the system to a clean backup state.
-
-### Step 8: Implement Endpoint Detection and Response (EDR)
-
-Use advanced tools that monitor behavior and can automate threat containment.
-
-### Step 9: Educate Users
-
-Promote awareness on phishing, social engineering, and the importance of keeping file name extensions enabled to avoid being tricked by disguised malicious files.
-
-### Step 10: Document and Report Incident
-
-Follow organizational incident response procedures to document and escalate the issue appropriately.
+<img width="616" height="437" alt="Lab 58" src="https://github.com/user-attachments/assets/2743e64b-b68c-41e4-b333-be1a7b70fd47" /></br>
 
 ---
 
-## 🧱 HARDENING THE SYSTEM
+### Step 8: Set up `DHCP Server`
 
-### Firewall
+Back in `Server Manager`, we launched the `Add Roles and Features` Wizard again to install the `DHCP Server` role, enabling the server to assign IP addresses dynamically within the network.
 
-To strengthen the security of the system, it’s important to enable and properly configure the `Windows Firewall`, including setting strict inbound rules that only allow necessary ports and block all others.
+<img width="779" height="554" alt="Lab 61" src="https://github.com/user-attachments/assets/2ba6c860-10d4-4a5e-b1cf-945f01291840" /></br>
 
-<img width="551" height="428" alt="image" src="https://github.com/user-attachments/assets/f996facd-82c4-48f4-ad50-755ec24b05eb" /></br>
+We navigated to `Tools` > `DHCP` and launched the `New Scope Wizard` to configure a DHCP scope. We named the scope `172.16.0.100-200` and set the IP address range from `172.16.0.100` to `172.16.0.200` with a subnet mask of `255.255.255.0` (prefix length 24). The router (default gateway) was set to `172.16.0.1`, and the parent domain was specified as `mydomain.com`. After activating, authorizing, and refreshing the DHCP server, its status displayed a green icon indicating it was functioning properly.
 
-<img width="428" height="575" alt="Lab 230" src="https://github.com/user-attachments/assets/34ac8299-80ca-4eec-851d-c3394cf722aa" /></br>
+<img width="167" height="172" alt="Lab 77" src="https://github.com/user-attachments/assets/cbfe1307-c73c-4d5b-9284-b3705fd0899e" /></br>
 
-Inbound Rules → New Rule → Port → TCP → 139, 445, 3389 → Block the Connection
+<img width="271" height="378" alt="Lab 78" src="https://github.com/user-attachments/assets/f484b260-c072-473e-9c35-a2888a5f4902" /></br>
+
+---
+
+### Step 9: Bulk User Creation with `PowerShell` in `Active Directory`
+
+To efficiently add 1,000+ user accounts to `Active Directory`, we used a `PowerShell` script in combination with a text file containing first and last names. The script created a new organizational unit called `_USERS` and then processed each name to generate a standardized username consisting of the user’s first initial and last name in lowercase. Each user was created with a default password `Password18` and placed within the _USERS OU. This automated method significantly streamlined bulk user provisioning, reducing manual effort and ensuring consistent account configuration across the domain.
+
+**Script:**
+```powershell
+$PASSWORD_FOR_USERS   = "Password18" 
+$USER_FIRST_LAST_LIST = Get-Content .\names.txt
+# ------------------------------------------------------ #
+
+$password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
+New-ADOrganizationalUnit -Name _USERS -ProtectedFromAccidentalDeletion $false
+
+foreach ($n in $USER_FIRST_LAST_LIST) {
+    $first = $n.Split(" ")[0].ToLower()
+    $last = $n.Split(" ")[1].ToLower()
+    $username = "$($first.Substring(0,1))$($last)".ToLower()
+    Write-Host "Creating user: $($username)" -BackgroundColor Black -ForegroundColor Cyan
+    
+    New-AdUser -AccountPassword $password `
+               -GivenName $first `
+               -Surname $last `
+               -DisplayName $username `
+               -Name $username `
+               -EmployeeID $username `
+               -PasswordNeverExpires $true `
+               -Path "ou=_USERS,$(([ADSI]`"").distinguishedName)" `
+               -Enabled $true
+}
+```
+**Results:**
+
+<img width="748" height="525" alt="Lab 89" src="https://github.com/user-attachments/assets/72a92db7-4552-406a-b0ef-cbb1315af366" /></br>
+
+Before running the script to create all 1,000 users, I tested its functionality by manually inserting my name `Briana Willis` as the first entry in the `names.txt` file. After executing the PowerShell script, a total of 1,001 users were created in Active Directory, confirming that the script worked as intended. The test user account `bwillis` was successfully generated using the naming convention implemented in the script, verifying that both the account creation logic and OU assignment were functioning properly.
+
+<img width="747" height="523" alt="Lab 94" src="https://github.com/user-attachments/assets/dc9c0eef-808a-4fa2-8463-572d78254a4c" />
 
 ---
 
