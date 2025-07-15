@@ -254,9 +254,7 @@ Enable-ADAccount -Identity bwillis
 
 For the final test, I launched the `Group Policy Management` Console by pressing `Win + R`, typing `gpmc.msc`, and pressing Enter. This opened the `Group Policy Management Editor`, allowing me to explore how `Group Policy Objects` (GPOs) are created, linked to `Organizational Units` (OUs), and used to manage user and computer configurations across the domain.
 
-<img width="804" height="319" alt="Lab 122" src="https://github.com/user-attachments/assets/f171a8c0-67c2-4cdc-9792-102cbd65831b" /></br>
-
-Within the `Group Policy Management Editor`, I navigated to `Computer Configuration` > `Policies` > `Windows Settings` > `Security Settings` > `Account Policies` > `Password Policy` to enforce stricter password requirements across the domain.
+Within the `Group Policy Management Editor`, I navigated to `Computer Configuration` > `Policies` > `Windows Settings` > `Security Settings` > `Account Policies` > `Password Policy` to enforce stricter password requirements and establish an account lockout policy across the domain.
 
 <img width="804" height="319" alt="Lab 122" src="https://github.com/user-attachments/assets/68ff421b-cdaf-461d-9426-92568e8ef5eb" /></br>
 
