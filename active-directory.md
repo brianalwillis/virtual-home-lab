@@ -217,7 +217,7 @@ In `System Properties`, I changed the computer name to `Client1` and selected `D
 
 ---
 
-## HOW TO MANUALLY RESET A PASSWORD
+## 🔑 HOW TO MANUALLY RESET A PASSWORD
 
 To reset a user's password in `Active Directory`, press `Win + R`, type `dsa.msc`, and press Enter to open `Active Directory Users and Computers`. Locate the user account—in this case, `bwillis`—by browsing to the appropriate Organizational Unit. Right-click the user and select `Reset Password`.
 
