@@ -1,5 +1,5 @@
 <h1 = align=center>HOME LAB - ACTIVE DIRECTORY</h1>
-<h2 = align=center>Bulk User Creation with PowerShell </h2>
+<h2 = align=center>Bulk User Provisioning with PowerShell</h2>
 
 <p align="center">
 <img width="1342" height="883" alt="Untitled Diagram drawio (3)" src="https://github.com/user-attachments/assets/978f6667-84a3-403e-b02b-9328f6341827" />
