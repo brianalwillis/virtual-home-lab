@@ -233,13 +233,55 @@ Assign an easy-to-remember password `Password1`, check `User must change passwor
 
 ## HOW TO AUTOMATE PASSWORD RESETS
 
+Password resets can also be automated using `PowerShell`, which is especially useful for bulk or remote management tasks. The following script resets the password for the user `bwillis`, enforces a password change at next logon, unlocks the account if it was locked, and ensures the account is enabled:
 
+```powershell
 
+# Reset password
+Set-ADAccountPassword -Identity bwillis -Reset -NewPassword (ConvertTo-SecureString "Password1234567890!@" -AsPlainText -Force)
 
+# Require password change at next logon
+Set-ADUser -Identity bwillis -ChangePasswordAtLogon $true
 
+# Unlock and enable the account
+Unlock-ADAccount -Identity bwillis
+Enable-ADAccount -Identity bwillis
+```
 
-*This project simulates a real-world attack scenario in a controlled virtual lab environment to demonstrate how a malicious payload can be delivered, executed, and monitored using offensive security tools. Its purpose is to analyze attacker behavior, assess system vulnerabilities, and explore defensive measures using tools like Splunk and Sysmon.*
+---
+
+## GROUP POLICY MANAGEMENT EDITOR
+
+For the final test, I launched the `Group Policy Management` Console by pressing `Win + R`, typing `gpmc.msc`, and pressing Enter. This opened the `Group Policy Management Editor`, allowing me to explore how `Group Policy Objects` (GPOs) are created, linked to `Organizational Units` (OUs), and used to manage user and computer configurations across the domain.
+
+<img width="804" height="319" alt="Lab 122" src="https://github.com/user-attachments/assets/f171a8c0-67c2-4cdc-9792-102cbd65831b" /></br>
+
+Within the `Group Policy Management Editor`, I navigated to `Computer Configuration` > `Policies` > `Windows Settings` > `Security Settings` > `Account Policies` > `Password Policy` to enforce stricter password requirements across the domain.
+
+<img width="804" height="319" alt="Lab 122" src="https://github.com/user-attachments/assets/68ff421b-cdaf-461d-9426-92568e8ef5eb" /></br>
+
+<img width="802" height="318" alt="Lab 123" src="https://github.com/user-attachments/assets/0a040ab2-f4cc-40ff-9981-a5c5d72e53ef" /></br>
+
+To enable auditing for user activity, I configured `audit policies` to track logon events, logoffs, and account lockouts. These settings allow security teams to monitor authentication activity and detect potential unauthorized access attempts, account misuse, or lockout patterns across the domain.
+
+<img width="803" height="592" alt="Lab 127" src="https://github.com/user-attachments/assets/8ca1e105-1c55-451e-b869-a5d740ab74a8" /></br>
+
+These audits can be analyzed in `Event Viewer` (`Win + R` > `eventvwr.msc`) under `Windows Logs` > `Security`.
+
+<img width="1156" height="595" alt="Lab 132" src="https://github.com/user-attachments/assets/0e675f68-a347-40b9-a058-6251d1ee5677" /></br>
+
+| Action          | Event ID | Description                                                |
+|-----------------|----------|------------------------------------------------------------|
+| Logon           | 4624     | Successful user logon                                      |
+| Logoff          | 4634     | User logoff                                                |
+| Logon Failure   | 4625     | Failed user logon attempt                                  |
+| Account Lockout | 4740     | A user account was locked out due to failed login attempts |
+| Special Logon   | 4672     | Logon with special privileges (e.g., admin rights)         |
+
+---
+
+*This project simulates a realistic enterprise network environment to practice and demonstrate core cybersecurity and IT infrastructure skills. It involves setting up a virtualized lab with a Windows Server 2019 domain controller, Active Directory, DHCP, and client machines, allowing hands-on experience with domain management, user provisioning, network configuration, and security policy enforcement..*
 
 **Created By:** `Briana Willis`  
-**Date:** `2025-07-13`  
-**Time:** `17:50 UTC`
+**Date:** `2025-07-15`  
+**Time:** `15:42 UTC`
