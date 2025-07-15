@@ -278,7 +278,7 @@ These audits can be analyzed in `Event Viewer` (`Win + R` > `eventvwr.msc`) unde
 
 ---
 
-*This project simulates a realistic enterprise network environment to practice and demonstrate core cybersecurity and IT infrastructure skills. It involves setting up a virtualized lab with a Windows Server 2019 domain controller, Active Directory, DHCP, and client machines, allowing hands-on experience with domain management, user provisioning, network configuration, and security policy enforcement..*
+*This project simulates a realistic enterprise network environment to practice and demonstrate core cybersecurity and IT infrastructure skills. It involves setting up a virtualized lab with a Windows Server 2019 domain controller, Active Directory, DHCP, and client machines, allowing hands-on experience with domain management, user provisioning, network configuration, and security policy enforcement.*
 
 **Created By:** `Briana Willis`  
 **Date:** `2025-07-15`  
