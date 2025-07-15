@@ -35,9 +35,9 @@ Designed and deployed a virtualized Windows domain lab using `VirtualBox`, `Wind
 
 ## 👣 STEP-BY-STEP: SETTING UP THE DOMAIN CONTROLLER
 
-### Step 1: `Virtual Machine` Creation and Provisioning
+### Step 1: `Server 19` Virtual Machine Creation and Provisioning
 
-The virtual machine, named `Domain-Controller`, was configured as a domain controller using the `Windows Server 2019 ISO`. It was provisioned with 2 GB of RAM and 4 virtual CPUs to support `Active Directory` and core infrastructure services.
+The virtual machine, named `Domain-Controller`, was configured as a domain controller using the `Windows Server 2019 ISO`. It was provisioned with 2048 MB of RAM and 4 virtual CPUs to support `Active Directory` and core infrastructure services.
 
 <img width="755" height="580" alt="Lab 1" src="https://github.com/user-attachments/assets/e081d054-9449-483e-a0cf-f4a4de7ce8d5" /></br>
 
@@ -166,59 +166,77 @@ foreach ($n in $USER_FIRST_LAST_LIST) {
 
 <img width="748" height="525" alt="Lab 89" src="https://github.com/user-attachments/assets/72a92db7-4552-406a-b0ef-cbb1315af366" /></br>
 
-Before running the script to create all 1,000 users, I tested its functionality by manually inserting my name `Briana Willis` as the first entry in the `names.txt` file. After executing the PowerShell script, a total of 1,001 users were created in Active Directory, confirming that the script worked as intended. The test user account `bwillis` was successfully generated using the naming convention implemented in the script, verifying that both the account creation logic and OU assignment were functioning properly.
+Before running the script to create all 1,000 users, I tested its functionality by manually inserting my name, `Briana Willis`, as the first entry in the `names.txt` file. After executing the PowerShell script, a total of 1,001 users were created in Active Directory, confirming that the script worked as intended. The test user account `bwillis` was successfully generated using the naming convention implemented in the script, verifying that both the account creation logic and OU assignment were functioning properly.
 
-<img width="747" height="523" alt="Lab 94" src="https://github.com/user-attachments/assets/dc9c0eef-808a-4fa2-8463-572d78254a4c" />
+<img width="747" height="523" alt="Lab 94" src="https://github.com/user-attachments/assets/dc9c0eef-808a-4fa2-8463-572d78254a4c" /></br>
+
+---
+## 👣 STEP-BY-STEP: SETTING UP THE CLIENT
+
+### Step 1: `Windows 10` Virtual Machine Creation and Provisioning
+
+The virtual machine, named `Client1`, was created using the Windows 10 ISO and provisioned with 4096 MB of RAM and 4 virtual CPUs. Network Adapter 1 was enabled on the same internal network as our domain controller, `test 3`.
+
+<img width="1131" height="471" alt="Lab 99" src="https://github.com/user-attachments/assets/8b8772d9-4a50-4efe-8d1a-dab122dda7c7" /></br>
 
 ---
 
-### Windows Defender and Updates
+### Step 2: `Windows Setup`
 
-Turning on `Windows Security` features—such as real-time antivirus protection, ransomware protection, and exploit mitigation—adds additional layers of defense. Ensuring that `Windows Updates` are enabled and set to install automatically helps keep the system protected against newly discovered threats and vulnerabilities. Additionally, keeping all operating system components and third-party applications updated with the latest security patches is essential.
+Powered on the virtual machine and proceeded through the Windows 10 installation process using the ISO image.
 
-<img width="792" height="581" alt="security" src="https://github.com/user-attachments/assets/3f71b339-ec5a-42c9-a779-15fa9e92a3fc" /></br>
+<img width="635" height="475" alt="Lab 20" src="https://github.com/user-attachments/assets/3ed47f26-c3dd-4559-8da0-4576b3284a63" /></br>
 
-<img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/ead80d00-87fc-47e1-bafe-40d60fee587e" /></br>
-
----
-
-### `139/tcp` NetBIOS Session Service
-
-<img width="1160" height="630" alt="Lab 237" src="https://github.com/user-attachments/assets/d7913fb4-5876-4c57-ab32-3d4ad3acc839" /></br>
-
-Control Panel → Network and Internet → Network Connections → Properties → Internet Protocol Version 4 → Properties → Advanced → WINS → Disable NetBIOS over TCP/IP
-
-<img width="861" height="587" alt="Lab 238" src="https://github.com/user-attachments/assets/13ffafba-9a1a-485c-8c9d-8f1d4a2b3440" /></br>
-
-Services → TCP/IP NetBIOS Helper → Properties → Startup Type: Disabled → Service Status: Stop
+*Windows Server 10 Pro → Accept the license terms → Username: bwillis → Password: Password18*
 
 ---
 
-### `445/tcp` Microsoft-DS (SMB over TCP)
+### Step 3: Confirming `DHCP` Functionality
 
-<img width="740" height="632" alt="Lab 236" src="https://github.com/user-attachments/assets/0f8305c6-4150-4743-9051-d58352786298" /></br>
+After setting up `Client1`, I logged in using the `bwillis` account with the default credentials for the first time. I then opened a command prompt and ran `ipconfig` to verify network settings. The Ethernet adapter showed the following configuration:
 
-Control Panel → Programs → Programs and Features → Disable SMB 1.0/CIFS File Sharing Support
+<img width="538" height="280" alt="Lab 100" src="https://github.com/user-attachments/assets/d3cf4e9c-3cd4-4d3e-8dc2-33f0abed07a9" /></br>
 
----
+These values confirm that the `DHCP` server is functioning correctly and issuing addresses within the defined scope, along with proper DNS domain suffix assignment. To validate `DNS` resolution, I successfully pinged `www.google.com` to confirm external connectivity and pinged `mydomain.com` to verify internal name resolution to the domain controller.
 
-### `3389/tcp` Remote Desktop Protocol (RDP)
+<img width="512" height="279" alt="Lab 101" src="https://github.com/user-attachments/assets/3ac7403f-e9ba-423a-980c-084accce8573" /></br>
 
-<img width="795" height="630" alt="Lab 231" src="https://github.com/user-attachments/assets/e719e705-143b-45a5-a0d9-8dcd8b408a57" /></br>
-
-Settings → System → Remote Desktop → Off
-
-<img width="407" height="463" alt="Lab 235" src="https://github.com/user-attachments/assets/1efcf22c-aab2-4888-a27c-9577ce1aefaa" /></br>
-
-Win + R → sysdm.cpl → Remote → Remote Desktop → Don't Allow Remote Connections
+<img width="464" height="205" alt="Lab 102" src="https://github.com/user-attachments/assets/ddec1a42-9364-4307-bb56-cecdc9de6196" /></br>
 
 ---
 
-### All Unnecessary and Vulnerable Ports are Closed
+### Step 4: Join `Client1` to the Domain
 
-<img width="605" height="229" alt="Lab 239" src="https://github.com/user-attachments/assets/b2a472bc-f93d-4f7e-8fa5-a919daef666d" />
+In `System Properties`, I changed the computer name to `Client1` and selected `Domain` under the `Member of` section. I entered `mydomain.com` as the domain name and was prompted to provide credentials. After authentication, the system was successfully added to the domain and prompted for a restart to apply the changes.
+
+<img width="297" height="147" alt="Lab 106" src="https://github.com/user-attachments/assets/236cb17a-d5ba-48a0-bf7c-ba0c01c23d7b" /></br>
+
+<img width="745" height="521" alt="Lab 108" src="https://github.com/user-attachments/assets/d500ba67-c71a-42ab-819c-9d9118eb63d2" /></br>
+
+<img width="382" height="118" alt="Lab 109" src="https://github.com/user-attachments/assets/be222b97-9232-41c4-b88b-ef68f02f7142" /></br>
 
 ---
+
+## HOW TO MANUALLY RESET A PASSWORD
+
+To reset a user's password in `Active Directory`, press `Win + R`, type `dsa.msc`, and press Enter to open `Active Directory Users and Computers`. Locate the user account—in this case, `bwillis`—by browsing to the appropriate Organizational Unit. Right-click the user and select `Reset Password`.
+
+<img width="512" height="509" alt="Lab 116" src="https://github.com/user-attachments/assets/6c6f078a-b4d0-4283-a918-3bc202cd1397" /></br>
+
+Assign an easy-to-remember password `Password1`, check `User must change password at next logon`, and also check `Unlock the user’s account` if it was previously locked. This process restores access while enforcing a secure password update upon next login.
+
+<img width="376" height="254" alt="Lab 117" src="https://github.com/user-attachments/assets/6c9c166a-fe9a-4a72-a582-b96636af8192" /></br>
+
+<img width="315" height="148" alt="Lab 118" src="https://github.com/user-attachments/assets/1ac6a648-e034-4c68-b266-c009acd33517" /></br>
+
+---
+
+## HOW TO AUTOMATE PASSWORD RESETS
+
+
+
+
+
 
 *This project simulates a real-world attack scenario in a controlled virtual lab environment to demonstrate how a malicious payload can be delivered, executed, and monitored using offensive security tools. Its purpose is to analyze attacker behavior, assess system vulnerabilities, and explore defensive measures using tools like Splunk and Sysmon.*
 
