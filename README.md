@@ -52,13 +52,13 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-### Step 2: Download the Windows Hosts Installer
+### Step 2: Download the `Windows Hosts` Installer
 
 <img width="1089" height="502" alt="Lab 2" src="https://github.com/user-attachments/assets/8a60e312-f2f4-4aea-a46e-947bb7e4f6a9" />
 
 ---
 
-### Step 3: Run the Installer and Follow the Installation Wizard
+### Step 3: Run the `VirtualBox` Installer and Follow the Installation Wizard
 1. **Custom Setup:** Next
 2. **Warning: Network Interfaces:** Next
 3. **Missing Dependencies:** Yes
@@ -70,15 +70,15 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-## 👣 Installing `Windows 10` in VirtualBox
+## 👣 Installing `Windows` in VirtualBox
 
-### Step 1: Download a Windows 10 ISO: `https://www.microsoft.com/en-us/software-download/windows10`
+### Step 1: Download a Windows ISO: `https://www.microsoft.com/en-us/software-download/windows10`
 
 <img width="992" height="263" alt="Lab 6" src="https://github.com/user-attachments/assets/a45d311f-e6a3-4c92-b63a-5fa1918179a5" />
 
 ---
 
-### Step 2: Run the Installer and Follow the Installation Wizard
+### Step 2: Run the `Windows` Installer and Follow the Installation Wizard
 1. **Applicable Notices and License Terms:** Accept
 2. **Create Installation Media:** Next
 3. **Select Language, Architecture, and Edition:** Use the recommended options → Next
@@ -88,7 +88,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-### Step 3: Open VirtualBox and Create a New VM
+### Step 3: Open `VirtualBox` and Create a `New` VM
 
 <img width="1277" height="727" alt="Lab 11" src="https://github.com/user-attachments/assets/eff2147d-5286-41c9-a6bf-4a25f0179c81" /></br>
 
@@ -113,7 +113,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-### Step 4: Start the VM and Install Windows
+### Step 4: `Start` the VM and Install `Windows`
 
 <img width="1280" height="730" alt="Lab 16" src="https://github.com/user-attachments/assets/7321efa8-9505-4df5-9442-9300051ab10d" /></br>
 
@@ -135,7 +135,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-### Step 2: Download a Prebuilt VM for VirtualBox
+### Step 2: Download a `Prebuilt VM` for VirtualBox
 
 <img width="881" height="526" alt="Kali" src="https://github.com/user-attachments/assets/8b58b4f3-8184-4319-83d6-aa2c90a9d9a6" /></br>
 <img width="1272" height="677" alt="Lab 28" src="https://github.com/user-attachments/assets/33e49b1c-64be-4407-ac94-70bfea34b284" /></br>
@@ -144,7 +144,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-### Step 3: Extract Kali Linux with 7-Zip
+### Step 3: Extract Kali Linux with `7-Zip`
 
 1. In the Downloads folder, right-click `kali-linux-2025.2-virtualbox-amd64`
 2. Hover over 7-Zip
@@ -158,7 +158,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-### Step 4: Start the Kali Linux VM
+### Step 4: `Start` the `Kali Linux` VM
 
 <img width="722" height="245" alt="Lab 31" src="https://github.com/user-attachments/assets/33d83883-343f-4f93-940a-d60d7be700ef" /></br>
 
@@ -170,7 +170,7 @@ A **virtual home lab** is a software-based environment you set up at home to tes
 
 ---
 
-## Properly Configure Your Virtual Machines!
+## Properly `Configure` Your Virtual Machines!
 
 - Ensure they have enough **resources**
 - Install **Guest Additions**
