@@ -2,21 +2,21 @@
 
 <img width="1162" height="902" alt="Untitled Diagram drawio" src="https://github.com/user-attachments/assets/7387547d-fbac-4c45-b6a7-ea13775466c6" />
 
-## 🏡 What is a Virtual Home Lab?
-A **virtual home lab** is a software-based environment you set up at home to test, learn, or experiment with IT infrastructure, networking, cybersecurity, development, or system administration — without needing a full rack of physical servers.
+## 🏡 What is a `Virtual Home Lab`?
+A `virtual home lab` is a software-based environment you set up at home to test, learn, or experiment with IT infrastructure, networking, cybersecurity, development, or system administration — without needing a full rack of physical servers.
 
-**A virtual lab usually includes:**
+`A virtual lab usually includes:`
 |Component        |Purpose 
-|-----------------|------------------------------------------------------------------------------|
+|:-----------------|:------------------------------------------------------------------------------|
 |Hypervisor       | Allows you to run multiple virtual machines on your PC                       |
 |Virtual Machines | Each VM can simulate a server, router, or client                             |
 |Virtual Network  | Simulates switches, routers, and firewalls to test real networking scenarios |
 |Storage          | Shared virtual drives for things like file servers or backup testing         |
 |Services         | DNS, DHCP, Active Directory, Web Servers, Pen-testing tools, etc.            |
 
-**What can you do with a virtual home lab?**
+`What can you do with a virtual home lab?`
 |Use Case              | Description
-|----------------------|----------------------------------------------------------------------|
+|:----------------------|:----------------------------------------------------------------------|
 |Learn IT Skills       | Practice Windows Server, Linux, networking, Docker, Kubernetes, etc. |
 |Cybersecurity Testing | Set up attack & defense labs                                         |
 |Certifications        | Prepare for exams like CompTIA, Cisco, AWS, Microsoft, etc.          |
