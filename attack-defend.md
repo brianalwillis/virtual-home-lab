@@ -5,9 +5,7 @@
 <img width="956" height="522" alt="Untitled Diagram drawio (7) drawio" src="https://github.com/user-attachments/assets/d4a4ad35-5a28-4c3e-bf07-cde76d12213b" />
 </p>
 
-<h2 align=center>Attacker: Kali Linux <code>192.168.20.20</code></h2>
-
-<h2 align=center>Defender: Windows 10 <code>192.168.20.10</code></h2>
+<h2 align=center><em>Attacker: Kali Linux <code>192.168.20.20</code></em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Defender: Windows 10 <code>192.168.20.10</code></em></h2>
 
 ---
 
